@@ -3,112 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K. Mahesh | Java Developer</title>
+    <title>K. Mahesh | Software Engineer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* Modern Typography */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+        /* Premium Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Fira+Code:wght@400;600&display=swap');
+
+        :root {
+            --bg-dark: #0b1121;
+            --bg-card: rgba(30, 41, 59, 0.6);
+            --accent: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* Animated Mesh Background for Hero */
-        .hero-section {
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #064e3b, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #f8fafc;
-            padding: 140px 0 120px 0;
-            border-bottom: 5px solid #10b981;
+        /* 3D Interactive Hero Section */
+        #vanta-canvas {
+            width: 100%;
+            height: 100vh; /* Full screen height */
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: rgba(11, 17, 33, 0.4);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .accent-text {
-            color: #10b981;
-            font-family: 'JetBrains Mono', monospace; /* Dev font for name */
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
         }
 
         .contact-pill {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            padding: 8px 20px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 8px 24px;
             border-radius: 50px;
             font-size: 0.9rem;
             display: inline-block;
-            margin: 5px;
+            margin: 8px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-pill:hover {
-            background-color: rgba(16, 185, 129, 0.2);
+            border-color: var(--accent);
+            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
         }
 
-        /* 3D Glassmorphism Cards */
+        /* Dark Premium Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-card);
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transform-style: preserve-3d; /* Required for 3D inner popping */
-            transition: box-shadow 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+            color: var(--text-main);
         }
 
         .glass-card:hover {
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.1);
         }
 
-        /* Making text pop out in 3D */
         .card-body {
-            transform: translateZ(30px); 
+            transform: translateZ(40px); /* Pushes content forward in 3D */
         }
 
-        .badge {
-            font-family: 'JetBrains Mono', monospace;
+        .badge-custom {
+            font-family: 'Fira Code', monospace;
             font-weight: 400;
-            letter-spacing: 0.5px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 6px 12px;
+            margin-bottom: 8px;
+            display: inline-block;
+            border-radius: 6px;
         }
 
-        /* Floating Animation for About box */
-        .float-box {
-            animation: float 6s ease-in-out infinite;
+        /* Section Styling */
+        .section-title {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .text-secondary-light {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #060a13;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-section text-center shadow-lg">
-        <div class="container" data-aos="zoom-in" data-aos-duration="1000">
-            <h1 class="display-3 fw-bold mb-3">Hi, I'm <span class="accent-text">&lt;K.Mahesh/&gt;</span></h1>
-            <h2 class="h3 fw-light mb-4">Aspiring Java Developer</h2>
-            <p class="lead text-light opacity-75 mb-5 mx-auto" style="max-width: 600px;">
-                Specializing in robust backend development using Spring Boot and Hibernate to build scalable, efficient systems.
+    <header id="vanta-canvas">
+        <div class="hero-content container" data-aos="zoom-out" data-aos-duration="1500">
+            <h1 class="display-3 fw-bold mb-3">Hi, I'm <span class="accent-text">K. Mahesh</span></h1>
+            <h2 class="h4 fw-light mb-4 text-light">Software Engineer | Full-Stack Java</h2>
+            <p class="lead text-secondary-light mb-5 mx-auto" style="max-width: 650px;">
+                Specializing in robust backend architecture using Spring Boot and Hibernate to build highly scalable, secure enterprise systems.
             </p>
             
-            <div class="d-flex justify-content-center gap-3 mb-5">
-                <a href="#projects" class="btn btn-outline-light btn-lg px-4 rounded-pill">View My Work</a>
-                <a href="mailto:konarasipallimahesh@gmail.com" class="btn btn-success btn-lg px-4 rounded-pill shadow-lg" style="background-color: #10b981; border: none;">Get In Touch</a>
+            <div class="d-flex justify-content-center gap-4 mb-5">
+                <a href="#projects" class="btn btn-outline-light btn-lg px-5 rounded-pill" style="border-width: 2px;">View Work</a>
+                <a href="mailto:konarasipallimahesh@gmail.com" class="btn btn-lg px-5 rounded-pill shadow-lg" style="background-color: var(--accent); color: #000; font-weight: 600; border: none;">Get In Touch</a>
             </div>
 
-            <div class="text-light opacity-75">
+            <div>
                 <span class="contact-pill">📞 9347563128</span>
                 <span class="contact-pill">✉️ konarasipallimahesh@gmail.com</span>
                 <span class="contact-pill">📍 Hyderabad</span>
@@ -116,16 +162,16 @@
         </div>
     </header>
 
-    <section id="about" class="py-5" style="background-color: #ffffff;">
-        <div class="container mt-4">
+    <section id="about" class="py-5" style="margin-top: 5rem;">
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <h2 class="fw-bold mb-4">About Me</h2>
-                    <div class="bg-light p-5 rounded-4 shadow-sm text-start float-box border border-light">
-                        <p class="fs-5 text-secondary">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="glass-card p-5 text-start mt-4">
+                        <p class="fs-5 text-secondary-light">
                             I am an aspiring Java Developer with a solid foundation in core Java, web technologies, and backend development. 
                         </p>
-                        <p class="fs-5 text-secondary">
+                        <p class="fs-5 text-secondary-light">
                             With a Bachelor of Technology in Civil Engineering, I bring a highly structured and analytical approach to problem-solving. I am passionate about clean code and efficient algorithms, and I thrive when architecting secure, scalable solutions. I am continually eager to learn new technologies and contribute effectively within team environments[cite: 29].
                         </p>
                     </div>
@@ -134,47 +180,47 @@
         </div>
     </section>
 
-    <section id="skills" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="fw-bold text-center mb-5" data-aos="fade-up">Technical Skills</h2>
+    <section id="skills" class="py-5">
+        <div class="container mt-5">
+            <h2 class="section-title" data-aos="fade-up">Technical Arsenal</h2>
             <div class="row g-4 justify-content-center">
                 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                         <div class="card-body text-center p-4">
-                            <h5 class="card-title fw-bold text-primary mb-4">Languages</h5>
-                            <p class="card-text">
-                                <span class="badge bg-primary bg-opacity-10 text-primary fs-6 mb-2 p-2">Java</span>
-                                <span class="badge bg-primary bg-opacity-10 text-primary fs-6 mb-2 p-2">Python</span>
-                            </p>
+                            <h5 class="card-title fw-bold mb-4">Languages</h5>
+                            <div class="card-text">
+                                <span class="badge-custom">Java</span>
+                                <span class="badge-custom">Python</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                         <div class="card-body text-center p-4">
-                            <h5 class="card-title fw-bold text-success mb-4">Backend & Frameworks</h5>
-                            <p class="card-text">
-                                <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-2 p-2">Spring Boot</span>
-                                <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-2 p-2">Spring</span>
-                                <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-2 p-2">Hibernate</span>
-                                <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-2 p-2">JSP / Servlets</span>
-                            </p>
+                            <h5 class="card-title fw-bold mb-4">Backend & Frameworks</h5>
+                            <div class="card-text">
+                                <span class="badge-custom">Spring Boot</span>
+                                <span class="badge-custom">Spring</span>
+                                <span class="badge-custom">Hibernate</span>
+                                <span class="badge-custom">JSP / Servlets</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                         <div class="card-body text-center p-4">
-                            <h5 class="card-title fw-bold text-info mb-4">Web, DB & Tools</h5>
-                            <p class="card-text">
-                                <span class="badge bg-info bg-opacity-10 text-info fs-6 mb-2 p-2">MySQL</span>
-                                <span class="badge bg-info bg-opacity-10 text-info fs-6 mb-2 p-2">Oracle</span>
-                                <span class="badge bg-dark bg-opacity-10 text-dark fs-6 mb-2 p-2">HTML/CSS/JS</span>
-                                <span class="badge bg-dark bg-opacity-10 text-dark fs-6 mb-2 p-2">IntelliJ/Eclipse</span>
-                            </p>
+                            <h5 class="card-title fw-bold mb-4">Web, DB & Tools</h5>
+                            <div class="card-text">
+                                <span class="badge-custom">MySQL</span>
+                                <span class="badge-custom">Oracle</span>
+                                <span class="badge-custom">HTML/CSS/JS</span>
+                                <span class="badge-custom">Git/GitHub</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,57 +229,58 @@
         </div>
     </section>
 
-    <section id="projects" class="py-5" style="background-color: #ffffff;">
-        <div class="container">
-            <h2 class="fw-bold text-center mb-5" data-aos="fade-up">Featured Projects</h2>
+    <section id="projects" class="py-5 mb-5">
+        <div class="container mt-5">
+            <h2 class="section-title" data-aos="fade-up">Featured Architecture</h2>
             <div class="row g-4">
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-scale="1.05">
-                        <div class="card-body p-4">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-scale="1.05">
+                        <div class="card-body p-4 d-flex flex-column">
                             <h4 class="fw-bold mb-3">SchoolPro Academic System</h4>
                             <div class="mb-3">
-                                <span class="badge bg-dark">Spring Boot</span>
-                                <span class="badge bg-dark">Security</span>
-                                <span class="badge bg-dark">MySQL</span>
+                                <span class="badge-custom">Spring Boot</span>
+                                <span class="badge-custom">Security</span>
+                                <span class="badge-custom">MySQL</span>
                             </div>
-                            <p class="text-secondary">
+                            <p class="text-secondary-light flex-grow-1">
                                 A full-stack enterprise solution designed for academic management. It features a complex relational database architecture, advanced security implementations using BCrypt and OTP verification, and dynamic, on-the-fly PDF report card generation.
                             </p>
-                            <a href="https://github.com/Mahesh-Konarasipalli/SchoolPro.git" class="btn btn-outline-primary btn-sm rounded-pill mt-auto">View Source Code</a>
+                            <a href="https://github.com/Mahesh-Konarasipalli/SchoolPro.git" target="_blank" class="btn btn-outline-light btn-sm rounded-pill mt-3 w-100">View Source Code</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-scale="1.05">
-                        <div class="card-body p-4">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-scale="1.05">
+                        <div class="card-body p-4 d-flex flex-column">
                             <h4 class="fw-bold mb-3">Employee Management App</h4>
                             <div class="mb-3">
-                                <span class="badge bg-dark">JSP</span>
-                                <span class="badge bg-dark">Spring Boot</span>
-                                <span class="badge bg-dark">Spring Data JPA</span>
+                                <span class="badge-custom">Spring Boot</span>
+                                <span class="badge-custom">Spring Data JPA</span>
+                                <span class="badge-custom">Flutter UI</span>
                             </div>
-                            <p class="text-secondary">
-                                A Web application utilizing a HTML frontend and a Java Spring Boot backend. Designed and integrated a custom RESTful API to manage employee records, utilizing Spring Data JPA for efficient database interactions.
+                            <p class="text-secondary-light flex-grow-1">
+                                Designed and integrated a custom RESTful API to manage employee records, utilizing Spring Data JPA for efficient database interactions, seamlessly consumed by a modern UI frontend.
                             </p>
-                            <a href="https://github.com/Mahesh-Konarasipalli/Employee" class="btn btn-outline-primary btn-sm rounded-pill mt-auto">View Source Code</a>
+                            <a href="https://github.com/Mahesh-Konarasipalli/Employee" target="_blank" class="btn btn-outline-light btn-sm rounded-pill mt-3 w-100">View Source Code</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 border-0 glass-card" data-tilt data-tilt-scale="1.05">
-                        <div class="card-body p-4">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 glass-card" data-tilt data-tilt-scale="1.05">
+                        <div class="card-body p-4 d-flex flex-column">
                             <h4 class="fw-bold mb-3">Online Job Portal System [cite: 18]</h4>
                             <div class="mb-3">
-                                <span class="badge bg-dark">Java</span>
-                                <span class="badge bg-dark">JSP/Servlets</span>
-                                <span class="badge bg-dark">Bootstrap 5</span>
-                                <span class="badge bg-dark">Maven</span>
+                                <span class="badge-custom">Java</span>
+                                <span class="badge-custom">JSP/Servlets</span>
+                                <span class="badge-custom">MVC</span>
                             </div>
-                            <p class="text-secondary">
-                                Developed a web-based job portal allowing job seekers to register, search, and apply online[cite: 21]. Employers can efficiently post job vacancies and view submitted applications[cite: 22]. Implemented MVC architecture with user authentication[cite: 25].
+                            <p class="text-secondary-light flex-grow-1">
+                                Developed a web-based job portal allowing job seekers to register, search, and apply online[cite: 21]. Employers can post job vacancies and view applications[cite: 22]. Implemented MVC architecture with secure authentication[cite: 25].
                             </p>
-                            <a href="https://github.com/Mahesh-Konarasipalli/Job-Portal-Java-MVC" class="btn btn-outline-primary btn-sm rounded-pill mt-auto">View Source Code</a>
+                            <a href="https://github.com/Mahesh-Konarasipalli/Job-Portal-Java-MVC" target="_blank" class="btn btn-outline-light btn-sm rounded-pill mt-3 w-100">View Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -242,40 +289,46 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-light py-5 mt-5 border-top border-success border-3">
+    <footer class="text-light py-5 mt-5">
         <div class="container text-center">
-            <h4 class="fw-bold mb-3 font-monospace">&lt;K. Mahesh/&gt;</h4>
-            <p class="mb-3 text-light opacity-75">
-                ✉️ konarasipallimahesh@gmail.com <br>
-                📞 9347563128
-            </p>
-            
+            <h4 class="fw-bold mb-3 accent-text">&lt;K. Mahesh /&gt;</h4>
             <div class="d-flex justify-content-center gap-3 my-4">
                 <a href="https://github.com/Mahesh-Konarasipalli" target="_blank" class="btn btn-outline-light rounded-pill px-4">GitHub</a>
                 <a href="https://www.linkedin.com/in/mahesh-konarasipalli-6797882a2/" target="_blank" class="btn btn-outline-light rounded-pill px-4">LinkedIn</a>
             </div>
-            
-            <p class="text-secondary small mb-0 mt-4">
-                &copy; 2026 K. Mahesh. All rights reserved. <br>
-                Built with HTML, CSS, and Bootstrap.
+            <p class="text-secondary-light small mb-0 mt-4">
+                &copy; 2026 K. Mahesh. Built with HTML, CSS, Three.js, and Bootstrap.
             </p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
     <script>
-        // Initialize Animate On Scroll
-        AOS.init({
-            once: true, // Animation happens only once while scrolling down
-            offset: 50, // Offset (in px) from the original trigger point
-        });
+        // Initialize Scroll Animations
+        AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // The 3D Tilt effect is automatically initialized by the data-tilt tags in the HTML!
+        // Initialize 3D Live Interactive Background
+        VANTA.NET({
+            el: "#vanta-canvas",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x10b981,     // Emerald Green nodes
+            backgroundColor: 0x0b1121, // Deep Dark Blue/Slate background
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
     </script>
 </body>
 </html>
